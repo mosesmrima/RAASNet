@@ -149,7 +149,7 @@ class HoverButton(tk.Button):
 class Login(Tk):
     def __init__(self):
         Tk.__init__(self)
-        self.title(string = "Login")
+        self.title(string = "Start")
         self.resizable(0,0)
         self.configure(background = 'white')
         self.style = Style()
@@ -211,35 +211,7 @@ class Login(Tk):
         self.login() # Redirect to login on event (hotkey is bound to <Return>)
 
     def login(self):
-        """# Check username and password
-        check_pwd = hashlib.sha256(self.options['pwd'].get().encode('utf-8')).hexdigest()
-
-        payload = {'user': self.options['username'].get(), 'pwd': check_pwd}
-
-        r = requests.post('https://zeznzo.nl/login.py', data=payload)
-        if r.status_code == 200:
-            if r.text.startswith('[ERROR]'):
-                messagebox.showwarning('ERROR', r.text.split('[ERROR] ')[1])
-                print(r.text)
-                return
-            elif r.text.startswith('[OK]'):
-                data = r.text[13:]
-                data = data.split('\n')
-                prof = {}
-
-                try:
-                    for i in data:
-                        i = i.split('=')
-                        prof[i[0]] = i[1]
-                except Exception:
-                    pass
-
-                self.destroy()
-                main = MainWindow(self.options['username'].get(), self.options['pwd'].get(), prof['Email'], prof['Name'], prof['Surname'], prof['Rank'], prof['Status'])
-                main.mainloop()
-        else:
-            messagebox.showwarning('ERROR', 'Failed to contact login server!\n%i' % r.status_code)
-            return"""
+        # Check username and password
         self.destroy()
         main = MainWindow(self.options['username'].get(), self.options['pwd'].get(), "email", "Name",\
  "sur", 1, 'Status') 
